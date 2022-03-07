@@ -25,7 +25,8 @@ function estimateLenght(start: number, step: number, end: number): number {
 }
 
 export function haskellRange(first: number, second: number, last: number) {
-  if (first >= second || second >= last) throw Error("Order Error!");
+  if (!((first < second && second < last) || (first > second && second > last)))
+    throw Error("Order Error!");
   const step = second - first;
   const op = operatorFactory(step);
   const result: number[] = Array(estimateLenght(first, step, last));
@@ -35,24 +36,22 @@ export function haskellRange(first: number, second: number, last: number) {
   return result;
 }
 
-console.log(haskellRange(1, 1.2, 10));
-//
-// export function range(first: number, second?: number, last?: number) {
-//   // 1 arg means start with 0 and end with first, step size 1
-//   // 2 args means start with first, end with second, step size 1
-//   // 3 args means start with first end with last, step size second - first
-//   if (second === undefined) {
-//     // single arg
-//     return haskellRange(0, Math.sign(first), first)
-//   }
-//   if (last === undefined) {
-//     const step = first < second ? 1 : -1;
-//     return haskellRange(first, step, second)
-//   }
-//   return haskellRange(first, second, last);
-// }
-//
-//
-// console.log(range(10))
-// console.log(range(5, 20))
-// console.log(range(1.1, 1.2, 3.5));
+// console.log(haskellRange(1, 1.2, 10));
+
+export function range(first: number, second?: number, last?: number) {
+  // 1 arg means start with 0 and end with first, step size 1
+  // 2 args means start with first, end with second, step size 1
+  // 3 args means start with first end with last, step size second - first
+  if (second === undefined) {
+    return haskellRange(0, Math.sign(first), first)
+  }
+  if (last === undefined) {
+    return haskellRange(first, first + (first < second ? 1 : -1), second);
+  }
+  return haskellRange(first, second, last);
+}
+
+
+console.log(range(9))
+console.log(range(3, -3.5))
+console.log(range(1, 0, -5));
