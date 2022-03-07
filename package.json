@@ -1,4 +1,30 @@
 {
+  "name": "@jellybeanci/range",
+  "version": "0.0.2",
+  "description": "Simple, yet powerful Range function",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jellybeanci/range.git"
+  },
+  "keywords": [
+    "range",
+    "functional"
+  ],
+  "author": "GokselKUCUKSAHIN <gokselkucuksahin@gmail.com> (https://github.com/GokselKUCUKSAHIN)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jellybeanci/range/issues"
+  },
+  "homepage": "https://github.com/jellybeanci/range#readme",
+  "dependencies": {
+    "@jellybeanci/int": "^0.1.1"
+  },
   "devDependencies": {
     "ts-node": "^10.7.0"
   }
